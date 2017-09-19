@@ -86,10 +86,10 @@ or just one to calculate, let´s start over \n`);
 // Init the work with year ranges
 function init(startYear, endYear){
     if(startYear == 0){
-        startYear = parseInt(endYear) ;
+        startYear = parseInt(endYear);
     }
     if(endYear == 0){
-        endYear = parseInt(startYear) ;
+        endYear = parseInt(startYear);
     }
 
     diff(startYear, endYear);
