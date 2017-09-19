@@ -1,3 +1,9 @@
+/**
+ * @author Alejandro Diaz
+ * @desc list all mondays that are the end of month in a years range
+ * @return string - list of dates where last day on month is monday
+ */
+
 function title() {
   return( process.stdout.write(`\n 
     ┌────────────────────────────┐
@@ -28,6 +34,8 @@ var questions = [
 var answers = [];
 var response = [];
 
+
+// Start process
 function start(i){
   title();
   ask(0);
@@ -38,6 +46,7 @@ function ask(i){
   process.stdout.write("> ");
 }
 
+// Get data from user
 process.stdin.on('data', function(data){ 
   answers.push(data.toString().trim());
   if( answers.length < questions.length){
@@ -47,6 +56,7 @@ process.stdin.on('data', function(data){
   }
 });
 
+// Check if answers are empty or not, call the init
 function check_answers(){
     if((answers[0] === "") && (answers[1] === "")){
         process.stdout.write(`\n You do not provide any answer to the questions. \n 
@@ -73,8 +83,8 @@ or just one to calculate, let´s start over \n`);
     }; 
 }
 
+// Init the work with year ranges
 function init(startYear, endYear){
-
     if(startYear == 0){
         startYear = parseInt(endYear) ;
     }
@@ -85,8 +95,8 @@ function init(startYear, endYear){
     diff(startYear, endYear);
 }
 
-function diff(startYear, endYear){
-    
+// Check years differences
+function diff(startYear, endYear){    
     if( endYear < startYear ){
         process.stdout.write(`\n\n You enter a greater end date than startDate and we 
 need to be sure on what are you doing. Let´s start over  \n`);
@@ -97,6 +107,7 @@ need to be sure on what are you doing. Let´s start over  \n`);
     }
 }
 
+// Parse dates
 function process_dates(startYear, endYear){
     startYearInt = parseInt(startYear);
     endYearInt = parseInt(endYear);
@@ -115,14 +126,15 @@ function process_dates(startYear, endYear){
     render();
 };
 
+// Render the strings
 function render(){
-   
     bigString = response.join();
     parsedString  = bigString.replace(/[, ]+/g, " ").trim();
     process.stdout.write(`\n ${parsedString} \n`);
     keep_process_alive();
 }
 
+// continue the process execution
 function keep_process_alive(){
     answers = [];
     response = [];
