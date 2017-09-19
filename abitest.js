@@ -18,7 +18,7 @@ function title() {
     │                            │
     └────────────────────────────┘
      \n
-     > Hi guys, this small piece of software will list 
+     > Hi guys, this small piece of software list 
      all mondays that are the end of month in a years range \n\n `));
 };
 
@@ -37,23 +37,23 @@ var response = [];
 
 // Start process
 function start(i){
-  title();
-  ask(0);
+    title();
+    ask(0);
 }
 
 function ask(i){
-  process.stdout.write(`\n ${questions[i]}`);
-  process.stdout.write("> ");
+    process.stdout.write(`\n ${questions[i]}`);
+    process.stdout.write("> ");
 }
 
 // Get data from user
 process.stdin.on('data', function(data){ 
-  answers.push(data.toString().trim());
-  if( answers.length < questions.length){
-      ask(answers.length);
-  }else{
-      check_answers();
-  }
+    answers.push(data.toString().trim());
+    if( answers.length < questions.length){
+        ask(answers.length);
+    }else{
+        check_answers();
+    }
 });
 
 // Check if answers are empty or not, call the init
@@ -141,4 +141,5 @@ function keep_process_alive(){
     continue_attempt();
     ask(0);
 }
+
 start(0);
